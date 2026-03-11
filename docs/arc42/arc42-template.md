@@ -2,6 +2,8 @@
 
 > **Based on the arc42 template** — a pragmatic and proven approach to software architecture documentation.
 > Inspired by Michaël Hompus's [Arc42 Practical Series](https://blog.hompus.nl/2026/02/01/arc42-practical-series/).
+>
+> 📖 **See [`pitstop-example.md`](./pitstop-example.md)** for a fully worked example using the Pitstop garage system, including PlantUML diagrams for every view.
 
 ---
 
@@ -14,6 +16,7 @@ Fill in each chapter iteratively. Start with what you know, skip what is not rel
 - Use the Copilot prompts in `.github/prompts/` to get AI-generated drafts for each chapter.
 - Update this document alongside significant code and architecture changes.
 - Keep it close to the code: store this in your repository so it evolves with the system.
+- **Use PlantUML for diagrams** — it is the preferred diagram format (see the Pitstop example). A `plantuml` code block renders with VS Code extensions and GitHub Apps.
 
 ---
 
@@ -138,16 +141,20 @@ _[1–3 short paragraphs: what are we building, why now, what pain does it solve
 
 _[Describe the system in its business environment. Who uses it? What data flows in and out?]_
 
-```
-[Context Diagram — replace with actual diagram tool (Mermaid, PlantUML, C4, etc.)]
+```plantuml
+@startuml context-diagram
+!theme plain
 
-┌──────────────────────────────────────────────────────────────┐
-│                                                              │
-│                     [Your System Name]                       │
-│                                                              │
-└──────────────────────────────────────────────────────────────┘
-        ↑                      ↑                    ↑
-  [External Actor 1]   [External System A]   [External System B]
+actor "User / Actor" as Actor
+rectangle "Your System" as System
+rectangle "External System A" as ExtA
+rectangle "External System B" as ExtB
+
+Actor --> System : interaction
+System --> ExtA : data / events
+ExtB --> System : data / events
+
+@enduml
 ```
 
 | External System / Actor  | Description                                  | Direction          |
@@ -205,12 +212,18 @@ _[Describe the system in its business environment. Who uses it? What data flows 
 
 _[High-level overview of the system. Show the main building blocks and their relationships.]_
 
-```
-[Building Block Diagram — Level 1]
+```plantuml
+@startuml building-blocks-l1
+!theme plain
 
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   [Component A] │────▶│   [Component B] │────▶│   [Component C] │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
+component "[Component A]" as A
+component "[Component B]" as B
+component "[Component C]" as C
+
+A --> B : calls / events
+B --> C : calls / events
+
+@enduml
 ```
 
 | Building Block        | Responsibility                               | Key Interfaces / Dependencies                |
@@ -244,13 +257,20 @@ _[Describe sub-components of the component above]_
 
 _[Brief description of what happens]_
 
-```
-[Sequence Diagram or Step-by-Step Description]
+```plantuml
+@startuml runtime-scenario-1
+!theme plain
 
-User → [Component A]: request
-[Component A] → [Component B]: validate
-[Component B] → [Component A]: result
-[Component A] → User: response
+actor "User" as User
+participant "[Component A]" as A
+participant "[Component B]" as B
+
+User -> A : request
+A -> B : validate / process
+B --> A : result
+A --> User : response
+
+@enduml
 ```
 
 ### Scenario 2: _[Scenario Name — e.g. Error Handling / Failure Case]_
@@ -275,17 +295,22 @@ _[Brief description of what happens when something goes wrong]_
 
 ### 7.1 Infrastructure Overview
 
-```
-[Deployment Diagram]
+```plantuml
+@startuml deployment-overview
+!theme plain
 
-Cloud Provider / On-Premises
-├── [Environment: Production]
-│   ├── [Node/Cluster: e.g. Kubernetes Cluster]
-│   │   ├── [Pod: Component A]
-│   │   └── [Pod: Component B]
-│   └── [Managed Service: e.g. Azure SQL Database]
-└── [Environment: Staging]
-    └── [...]
+node "Cloud / On-Premises" {
+    node "Production Environment" {
+        rectangle "[Component A]\n(container)" as A
+        rectangle "[Component B]\n(container)" as B
+        database "Database" as DB
+    }
+}
+
+A --> DB : read/write
+B --> DB : read
+
+@enduml
 ```
 
 ### 7.2 Environment Mapping

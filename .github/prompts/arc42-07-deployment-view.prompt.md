@@ -25,8 +25,10 @@ Please ask me:
 Generate Markdown content ready to replace the placeholder in Chapter 7.
 
 Structure:
-- 7.1 Infrastructure Overview: An ASCII or Mermaid deployment diagram showing nodes and deployed components
+- 7.1 Infrastructure Overview: A **PlantUML deployment diagram** using `node`, `rectangle`, `database`, and `cloud` elements showing nodes and deployed components
 - 7.2 Environment Mapping: A table of environments and their notable characteristics
+
+Use `plantuml` fenced code blocks. See `docs/arc42/pitstop-example.md` Chapter 7 for a reference deployment diagram.
 
 ## Tips
 

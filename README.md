@@ -11,6 +11,7 @@ A practical arc42 architecture documentation template with GitHub Copilot prompt
 | File / Directory | Description |
 | :--- | :--- |
 | `docs/arc42/arc42-template.md` | The arc42 template with best practices, tips, and "done-when" criteria for all 12 chapters |
+| `docs/arc42/pitstop-example.md` | **A fully worked example** using the Pitstop garage system — all 12 chapters filled in with PlantUML diagrams |
 | `.github/copilot-instructions.md` | Repository-wide GitHub Copilot instructions for arc42 documentation standards |
 | `.github/instructions/arc42.instructions.md` | File-scoped instructions applied to all files in `docs/arc42/` |
 | `.github/agents/arc42-documentation-agent.md` | A dedicated GitHub Copilot agent for iterative arc42 documentation sessions |
@@ -43,7 +44,21 @@ A practical arc42 architecture documentation template with GitHub Copilot prompt
 
 ---
 
-## The arc42 template structure
+## Pitstop Example
+
+[`docs/arc42/pitstop-example.md`](docs/arc42/pitstop-example.md) is a **fully completed arc42 document** for the fictitious _Pitstop_ garage workshop management system, based on the [original Pitstop arc42 example](https://gist.github.com/eNeRGy164/90f63e78d3e528f7b8490538a6781b5f) by [@eNeRGy164](https://github.com/eNeRGy164) and Michaël Hompus's blog series.
+
+It covers all 12 chapters with real content and **PlantUML diagrams** for:
+- **Chapter 3** — Context diagram (system boundary, external actors)
+- **Chapter 5** — Building block views (L1 system overview + L2 service internals)
+- **Chapter 6** — Runtime sequence diagrams (appointment import, status update, offline sync)
+- **Chapter 7** — Deployment diagram (Kubernetes cluster, managed services)
+
+Use it as a reference for how a filled-in arc42 document should look.
+
+---
+
+
 
 The template covers all 12 arc42 chapters, with best practices and "done-when" criteria embedded in each section:
 

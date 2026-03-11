@@ -24,13 +24,15 @@ Please ask me:
 Generate Markdown content ready to replace the placeholder in Chapter 3.
 
 Structure:
-- 3.1 Business Context: A brief description + a simple ASCII or Mermaid context diagram + a table of external actors/systems (System/Actor | Description | Direction)
+- 3.1 Business Context: A brief description + a **PlantUML context diagram** + a table of external actors/systems (System/Actor | Description | Direction)
 - 3.2 Technical Context: A table of external interfaces (External System | Communication Protocol | Data Exchanged)
+
+Use a `plantuml` fenced code block for the diagram. See `docs/arc42/pitstop-example.md` Chapter 3 for a reference example using `actor`, `rectangle`, and arrows.
 
 ## Tips
 
 - Show ONLY the system boundary — no internal components yet.
 - This is NOT the place for internal architecture. Save that for Chapter 5.
-- A simple diagram (even ASCII art) is worth more than paragraphs of text.
+- A PlantUML diagram is worth more than paragraphs of text.
 - "Direction" means: does data flow in, out, or both ways?
 - Include both human users and machine-to-machine integrations.

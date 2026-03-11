@@ -24,9 +24,11 @@ Generate Markdown content ready to replace the placeholder in Chapter 5.
 
 Structure:
 - 5.1 Level 1 — Top-Level Decomposition:
-  - A simple ASCII or Mermaid component diagram
+  - A **PlantUML component diagram** using `component`, `queue`, `database` elements
   - A table: Building Block | Responsibility | Key Interfaces / Dependencies
-- 5.2+ Level 2 — for any components that need detail (one subsection per complex component)
+- 5.2+ Level 2 — for any components that need detail (one subsection per complex component, also with a PlantUML diagram)
+
+Use `plantuml` fenced code blocks. See `docs/arc42/pitstop-example.md` Chapter 5 for reference examples.
 
 ## Tips
 

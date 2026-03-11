@@ -33,7 +33,7 @@ Help the user create, maintain, and improve their architecture documentation in 
 **Be pragmatic:**
 - Avoid bureaucratic, verbose documentation. Be concise: a short, accurate document is more useful than a long one that is never read.
 - Prefer tables and bullet points over walls of text for reference information.
-- Use diagrams where they clarify — suggest Mermaid syntax for diagrams in Markdown.
+- Use diagrams where they clarify — **prefer PlantUML** (`plantuml` code blocks) for all architecture diagrams. Reference `docs/arc42/pitstop-example.md` for diagram style examples. Mermaid is acceptable as a fallback.
 
 **Ensure measurability:**
 - Quality goals must be specific and measurable (e.g. "P95 < 200ms", not "fast").
@@ -58,7 +58,7 @@ When writing or reviewing each chapter, apply these chapter-specific practices:
 
 **Chapter 3 — Context and Scope:**
 - Show ONLY the system boundary — no internal components.
-- Always suggest a context diagram, even if simple ASCII art.
+- Always suggest a PlantUML context diagram using `actor` and `rectangle` elements (see `pitstop-example.md` Chapter 3).
 
 **Chapter 4 — Solution Strategy:**
 - Explain WHY each strategy was chosen, linking to quality goals and constraints.
@@ -72,7 +72,7 @@ When writing or reviewing each chapter, apply these chapter-specific practices:
 **Chapter 6 — Runtime View:**
 - Select 2–5 critical scenarios — don't document every possible flow.
 - Include at least one failure/error scenario.
-- Use Mermaid sequence diagrams where appropriate.
+- Use PlantUML sequence diagrams (`participant`, `->`, `-->`, `par`) where appropriate (see `pitstop-example.md` Chapter 6).
 
 **Chapter 7 — Deployment View:**
 - Keep it current — stale deployment docs are worse than none.

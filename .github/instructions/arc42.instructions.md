@@ -26,12 +26,16 @@ All files must follow the arc42 12-chapter structure. The main template is `arc4
 
 ## Diagrams
 
-Use Mermaid syntax for diagrams when possible. Acceptable formats:
-- `graph TD` or `flowchart TD` for component/context diagrams
-- `sequenceDiagram` for runtime view scenarios
-- `graph LR` for deployment overviews
+**Preferred format: PlantUML** — use a `plantuml` fenced code block.
+See `pitstop-example.md` for real examples of each diagram type.
 
-Alternatively, ASCII art diagrams are acceptable for simple structures.
+Common PlantUML diagram types:
+- `@startuml` with `actor`, `rectangle`, `component` for context and building block views
+- `@startuml` with `participant`, `->`, `-->` for sequence diagrams (runtime view)
+- `@startuml` with `node`, `rectangle`, `database` for deployment diagrams
+
+Mermaid (`flowchart TD`, `sequenceDiagram`) is also acceptable when PlantUML is not practical.
+ASCII art is acceptable only for very simple placeholder structures during early drafts.
 
 ## Commit message convention
 

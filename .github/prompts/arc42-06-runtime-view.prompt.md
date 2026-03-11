@@ -25,8 +25,10 @@ Generate Markdown content ready to replace the placeholder in Chapter 6.
 
 For each scenario:
 - A brief title and description (1–2 sentences)
-- A Mermaid sequence diagram or numbered step-by-step list showing the interaction
+- A **PlantUML sequence diagram** using `participant`, `->`, `-->`, and `par` blocks where applicable
 - Note any error handling or alternative paths
+
+Use `plantuml` fenced code blocks. See `docs/arc42/pitstop-example.md` Chapter 6 for reference examples including parallel flows and error scenarios.
 
 ## Tips
 
@@ -34,15 +36,17 @@ For each scenario:
 - Include at least one error/failure scenario.
 - Use component names from Chapter 5 for consistency.
 - Do NOT repeat the static structure from Ch5 here — focus on the "what happens when".
-- Sequence diagrams are ideal for showing timing and order of interactions.
-- Example Mermaid sequence:
-  ```
-  sequenceDiagram
-    participant User
-    participant API
-    participant Service
-    User->>API: POST /orders
-    API->>Service: createOrder(data)
-    Service-->>API: OrderCreated event
-    API-->>User: 201 Created
+- Use `par` blocks in PlantUML to show parallel fan-out to multiple services.
+- Example PlantUML sequence:
+  ```plantuml
+  @startuml scenario-name
+  !theme plain
+  participant "User" as User
+  participant "API" as API
+  participant "Service" as Service
+  User -> API : POST /orders
+  API -> Service : createOrder(data)
+  Service --> API : OrderCreated event
+  API --> User : 201 Created
+  @enduml
   ```
