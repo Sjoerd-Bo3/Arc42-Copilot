@@ -11,15 +11,36 @@ Inspired by the [arc42 practical blog series](https://blog.hompus.nl/2026/02/01/
 | `templates/arc42-template/` | Copy-paste arc42 markdown template with PlantUML diagram stubs for every chapter |
 | `templates/arc42-best-practices/` | Alternate template with embedded tips, anti-patterns, checklists, and guidance per section |
 | `examples/pitstop/` | Fully worked-out Pitstop garage management example (all 12 chapters + PlantUML) |
-| `.github/prompts/` | GitHub Copilot prompt files for iteratively writing each arc42 chapter |
-| `copilot-agents/` | Copilot Chat agent definitions for architecture documentation workflows |
+| `.github/skills/` | Copilot skills for iteratively writing arc42 documentation |
+| `.github/copilot-instructions.md` | Repository-wide Copilot instructions |
 
 ## Quick start
 
 1. **New project** - Copy `templates/arc42-template/` into your repo's `docs/arc42/` folder.
 2. **Need guidance** - Use `templates/arc42-best-practices/` instead for inline tips.
 3. **See an example** - Browse `examples/pitstop/` for a complete, realistic reference.
-4. **Write with AI** - Use the prompts in `.github/prompts/` with GitHub Copilot Chat or Claude.
+4. **Write with AI** - Use the skills below with GitHub Copilot Chat or Claude.
+
+## Skills
+
+### Task skills (invoke with `/skill-name`)
+
+| Skill | Purpose |
+|-------|---------|
+| `/arc42-scaffold` | Generate initial arc42 skeleton for a new project |
+| `/arc42-chapter 5` | Write or improve a specific chapter |
+| `/arc42-review` | Review docs for completeness and cross-chapter consistency |
+| `/arc42-adr` | Create Architecture Decision Records |
+| `/arc42-diagram` | Generate/improve PlantUML diagrams |
+| `/arc42-quality` | Write testable quality scenarios for Chapter 10 |
+
+### Agent skills (for complex workflows)
+
+| Skill | Purpose |
+|-------|---------|
+| `/arc42-architect` | Full workflow: discovery, skeleton, core views, quality, risks |
+| `/arc42-reviewer` | Cross-chapter consistency and completeness review |
+| `/arc42-diagram-expert` | PlantUML specialist with patterns for every diagram type |
 
 ## PlantUML
 
@@ -31,12 +52,15 @@ All diagrams use [PlantUML](https://plantuml.com/) syntax embedded in markdown f
 
 ## Iterative writing approach
 
-Architecture documentation is never "done". The prompts and agents are designed for iterative use:
+Architecture documentation is never "done". The skills are designed for iterative use:
 
-1. **Skeleton** - Generate the initial structure with placeholders
-2. **Draft** - Fill in each chapter using the guided prompts
-3. **Review** - Use the review agent to check completeness and consistency
-4. **Refine** - Iterate on specific sections as the architecture evolves
+1. **Scaffold** - `/arc42-scaffold` to generate the initial structure
+2. **Prioritize** - Write Ch1 (Goals), Ch3 (Context), Ch12 (Glossary) first
+3. **Draft** - `/arc42-chapter` for each chapter, using codebase analysis
+4. **Visualize** - `/arc42-diagram` to add/improve PlantUML diagrams
+5. **Decide** - `/arc42-adr` when you make important architecture decisions
+6. **Review** - `/arc42-review` to check consistency periodically
+7. **Repeat** - Revisit docs when the architecture evolves
 
 ## Credits
 

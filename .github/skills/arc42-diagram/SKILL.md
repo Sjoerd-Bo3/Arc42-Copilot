@@ -1,12 +1,14 @@
+---
+name: arc42-diagram
+description: Generate or improve PlantUML diagrams for arc42 documentation. Supports context, building block, sequence, activity, deployment, and mind map diagrams.
+argument-hint: "diagram type and subject (e.g. 'context diagram for payment service')"
+---
+
 # Arc42 PlantUML Diagram Generator
 
-Generate or improve PlantUML diagrams for arc42 documentation.
+Create, improve, and validate PlantUML diagrams for arc42 chapters.
 
-## Instructions
-
-You are a diagram specialist for architecture documentation. Generate PlantUML diagrams that are clear, consistent, and follow arc42 conventions.
-
-### Diagram types by chapter:
+## Diagram types by chapter
 
 | Chapter | Diagram type | PlantUML keyword |
 |---------|-------------|------------------|
@@ -17,28 +19,28 @@ You are a diagram specialist for architecture documentation. Generate PlantUML d
 | 7 - Deployment | Deployment nodes | `node`, `artifact`, `database`, `cloud` |
 | 10 - Quality | Mind maps | `@startmindmap` |
 
-### Style conventions (always apply):
+## Style guide (always apply)
 
 ```plantuml
 skinparam shadowing false
 skinparam componentStyle rectangle
 ```
 
-### Color conventions:
+### Colors
 
-| Element | Color | Example |
-|---------|-------|---------|
-| Your system (boundary) | `#LightBlue` | `package "My System" #LightBlue { }` |
-| Infrastructure | `#lightgreen` | `node "Host" #lightgreen { }` |
-| External systems | `#lightblue` | `cloud "External" #lightblue { }` |
-| Highlighted system | `#OrangeRed` | For the main system in context diagrams |
+| Element | Color |
+|---------|-------|
+| Your system (boundary) | `#LightBlue` |
+| Highlighted system | `#OrangeRed` |
+| Infrastructure | `#lightgreen` |
+| External systems | `#lightblue` |
+| White-box internals | `#white` |
 
-### Sequence diagram conventions:
+### Sequence diagrams
 
 ```plantuml
 hide footbox
 skinparam shadowing false
-
 participant "Name" as Alias
 Alias -> Other ++ : message
 Other --> Alias -- : response
@@ -46,9 +48,9 @@ Other --> Alias -- : response
 
 - Use `++`/`--` for activation bars
 - Use `== Section ==` for logical groupings
-- Keep participants under 7 per diagram
+- Max 7 participants per diagram
 
-### Activity diagram conventions:
+### Activity diagrams
 
 ```plantuml
 |Swim Lane Name|
@@ -62,7 +64,7 @@ endif
 stop
 ```
 
-### Deployment diagram conventions:
+### Deployment diagrams
 
 ```plantuml
 node "Physical Host" #lightgreen {
@@ -78,8 +80,23 @@ Svc --> DB : SQL
 Svc --> ExtApi : REST
 ```
 
-### Quality rules:
+### Mind maps
+
+```plantuml
+@startmindmap
+skinparam shadowing false
+* Root Topic
+** Branch A
+*** Leaf 1
+*** Leaf 2
+** Branch B
+@endmindmap
+```
+
+## Quality rules
+
 - Max 7-10 elements per diagram. Split into sub-diagrams if larger.
-- Every arrow should have a label (protocol, data type, or action).
+- Every arrow must have a label (protocol, data type, or action).
 - Use `\n` in labels for multi-line text on connections.
-- Test that the PlantUML syntax is valid before outputting.
+- Always validate PlantUML syntax before outputting.
+- Match component names to actual codebase names.
